@@ -34,7 +34,7 @@ class UrlRules extends Object implements UrlRuleInterface
     public function parseRequest($manager, $request)
     {
         if(empty($this->model) || empty($this->action) || empty($this->url_key) || empty($this->action_key) || empty($this->controller_and_action))
-            throw new \Exception('Parameter exception ' . UrlRules::className() .' model, action, url_key, action_key or controller_and_action.');
+            throw new \Exception('Class ' . UrlRules::className() .' parameter exception model, action, url_key, action_key or controller_and_action.');
 
         $model = \Yii::createObject($this->model);
         if(!$model instanceof IUrlRules)
