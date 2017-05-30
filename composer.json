@@ -1,0 +1,21 @@
+{
+    "name": "maks757/yii2-friendly-url",
+    "description": "Friendly url for your library or module",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","friendly","url","friendly url"],
+    "license": "BSD-4-Clause",
+    "authors": [
+        {
+            "name": "Maxim Cherednyk",
+            "email": "maks757q@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "maks757\\friendly\\": ""
+        }
+    }
+}
