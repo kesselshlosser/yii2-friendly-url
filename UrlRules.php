@@ -58,6 +58,9 @@ class UrlRules extends Object implements UrlRuleInterface
      */
     public function createUrl($manager, $route, $params)
     {
+        if(empty($this->model) || empty($this->action) || empty($this->url_key) || empty($this->action_key) || empty($this->controller_and_action))
+            throw new \Exception('Class ' . UrlRules::className() .' parameter exception model, action, url_key, action_key or controller_and_action.');
+
         $model = \Yii::createObject($this->model);
         if(!$model instanceof IUrlRules)
             throw new \Exception('Model '.$this->model .' not using interface '. UrlRuleInterface::class );
