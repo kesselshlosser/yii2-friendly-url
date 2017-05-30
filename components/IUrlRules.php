@@ -9,11 +9,21 @@
  * Time: 11:37
  */
 
-namespace maks757\friendly;
+namespace maks757\friendly\components;
 
 
 interface IUrlRules
 {
+    /**
+     * @param mixed $key
+     * @return integer model id
+     */
     function fiendKey($key);
-    function getSeoUrl();
+
+
+    /**
+     * @param integer $id
+     * @return string
+     */
+    function getSeoUrl($id);
 }
