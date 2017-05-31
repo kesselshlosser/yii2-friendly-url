@@ -66,7 +66,7 @@ class UrlRules extends Object implements UrlRuleInterface
             throw new \Exception('Model '.$this->model .' not using interface '. UrlRuleInterface::class );
 
         if ($route === $this->action && !empty($params[$this->url_key])) {
-            $seoUrl = $model->getSeoUrl($params[$this->url_key]);
+            $seoUrl = $model->seoUrl($params[$this->url_key]);
             if(!empty($seoUrl)){
                 return $route . '/' . $seoUrl;
             }
