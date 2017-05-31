@@ -25,5 +25,5 @@ interface IUrlRules
      * @param integer $id
      * @return string
      */
-    function getSeoUrl($id);
+    function seoUrl($id);
 }
