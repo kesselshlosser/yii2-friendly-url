@@ -19,7 +19,7 @@ class UrlRules extends Object implements UrlRuleInterface
     public $action_key;
     public $controller_and_action;
     public $action;
-    public $level = 1;
+    private $level;
     public $model;
 
     /**
@@ -40,6 +40,7 @@ class UrlRules extends Object implements UrlRuleInterface
         if(!$model instanceof IUrlRules)
             throw new \Exception('Model '.$this->model .' not using interface '. UrlRuleInterface::class .'.');
 
+        $this->level = count(explode('/', $this->action));
         $pathInfo = explode('/', $request->getPathInfo());
         if (strpos($request->getPathInfo(), $this->action) !== false && !empty($pathInfo[$this->level])) {
             return [$this->controller_and_action, [$this->action_key => $model->fiendKey($pathInfo[$this->level])]];
