@@ -116,7 +116,7 @@ Configuration
 View
 -----
 ```php
-<a href="Url::toRoute(['/news/show', 'id' => $news->id])>Go to news</a>
+<a href="Url::toRoute(['/news/show', 'id' => $news->id])">Go to news</a>
 ```
 
 Action
