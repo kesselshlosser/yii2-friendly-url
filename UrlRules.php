@@ -12,6 +12,10 @@ use yii\web\UrlRuleInterface;
 
 /**
  * @property Object $model
+ * @property string $url_key
+ * @property string $action_key
+ * @property string $controller_and_action
+ * @property string $action
 */
 class UrlRules extends Object implements UrlRuleInterface
 {
