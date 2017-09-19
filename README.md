@@ -45,39 +45,24 @@ class NewsModel extends \yii\db\ActiveRecord implements maks757\friendly\compone
     public function rules()
     {
         return [
-            [['image', 'big_image', 'name'], 'required'],
-            [['date'], 'integer'],
-            [['image'], 'string', 'max' => 100],
-            [['name'], 'string', 'max' => 255],
+            //...
             // seo data
             [['seoUrl', 'seoTitle', 'seoDescription', 'seoKeywords'], 'string']
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'seoUrl' => 'СЕО Url',
-            'seoTitle' => 'СЕО Title',
-            'seoDescription' => 'СЕО Description',
-            'seoKeywords' => 'СЕО Keys',
-        ];
-    }
     
+    // Exemple: $key = 'my-first-news' -> return id
     /**
      * @param mixed $key
      * @return boolean|integer model id
      */
     public function fiendKey($key)
     {
-        $object = NewsModel::findOne(key);
+        $object = NewsModel::findOne(['seoTitle' => $key]);
         return empty($object) ? false : $object->id;
     }
 
+    // Exemple: $id = 10 -> return seoUrl
     /**
      * @param integer $id
      * @return string
