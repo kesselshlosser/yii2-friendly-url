@@ -29,14 +29,14 @@ Model
 -----
 ```php
 // implements IUrlRules !!!
-class NewsModel extends \yii\db\ActiveRecord implements maks757\friendly\components\IUrlRules
+class ProductModel extends \yii\db\ActiveRecord implements maks757\friendly\components\IUrlRules
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'article';
+        return 'products';
     }
 
     /**
@@ -51,15 +51,15 @@ class NewsModel extends \yii\db\ActiveRecord implements maks757\friendly\compone
         ];
     }
     
-    // Exemple: $key = 'my-first-news' -> return id
+    // Exemple: $key = 'my-first-product' -> return id
     /**
      * @param mixed $key
      * @return boolean|integer model id
      */
     public function fiendKey($key)
     {
-        $object = NewsModel::findOne(['seoTitle' => $key]);
-        return empty($object) ? false : $object->id;
+        $model = NewsModel::findOne(['seoTitle' => $key]);
+        return empty($model) ? false : $model->id;
     }
 
     // Exemple: $id = 10 -> return seoUrl
@@ -69,7 +69,7 @@ class NewsModel extends \yii\db\ActiveRecord implements maks757\friendly\compone
      */
     public function seoUrl($id)
     {
-        return NewsModel::findOne($id)->seoUrl;
+        return ProductModel::findOne($id)->seoUrl;
     }
 }
 ```
@@ -83,15 +83,18 @@ Configuration
         'enablePrettyUrl' => true,
         'showScriptName' => false,
         'rules' => [
-            'news' => 'news/show',
+            'news' => 'product/show',
             [
-                'class' => \maks757\friendly\UrlRules::className(),
-                'model' => \common\modules\news\entities\NewsModel::class,
-                'action' => 'news/show', // View 'news/show' or news
-                'url_key' => 'id', // View set news id
-                'action_key' => 'news_id', // Action get news id
-                'controller_and_action' => '/news/show' // Action news show
-            ]
+                    'class' => \maks757\friendly\UrlRules::className(),
+                    'action' => 'product/show', // View 'product/show' or news
+                    'controller_and_action' => 'product/show', // Action news show
+                    //param: (action_key) - Action param get product id
+                    //param: (url_key) - // View set product id
+                    'routes' => [
+                        ['model' => \common\models\ProductGroup::class, 'url_key' => 'group_id', 'action_key' => 'group',],
+                        ['model' => \common\models\Product::class, 'url_key' => 'product_id', 'action_key' => 'product',],
+                    ]
+                ],
         ],
     ],
     //...
@@ -101,13 +104,16 @@ Configuration
 View
 -----
 ```php
-<a href="Url::toRoute(['/news/show', 'id' => $news->id])">Go to news</a>
+<a href="Url::toRoute(['/product/show', 'group_id' => $group, 'product_id' => $product->id])">Go to product</a>
+example url: https://tise/product/show/water/colla
+water = group seo url
+colla = product seo url
 ```
 
-Action
+Action from Product Controller
 -----
 ```php
-public function actionShow($news_id)
+public function actionShow($group, $product)
 {
     //...
 }
