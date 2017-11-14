@@ -58,7 +58,7 @@ class ProductModel extends \yii\db\ActiveRecord implements maks757\friendly\comp
      */
     public function fiendKey($key)
     {
-        $model = NewsModel::findOne(['seoTitle' => $key]);
+        $model = ProductModel::findOne(['seoTitle' => $key]);
         return empty($model) ? false : $model->id;
     }
 
