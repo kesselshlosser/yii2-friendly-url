@@ -106,9 +106,9 @@ View
 ```php
 <a href="Url::toRoute(['/product/show', 'group_id' => $group, 'product_id' => $product->id])">Go to product</a>
 ```
-example url: https://tise/product/show/water/colla
-water = group seo url
-colla = product seo url
+example url: https://tise/product/show/water/colla<br>
+water = group seo url<br>
+colla = product seo url<br>
 
 Action from Product Controller
 -----
