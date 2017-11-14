@@ -91,8 +91,8 @@ Configuration
                     //param: (action_key) - Action param get product id
                     //param: (url_key) - // View set product id
                     'routes' => [
-                        ['model' => \common\models\ProductGroup::class, 'url_key' => 'group_id', 'action_key' => 'group',],
-                        ['model' => \common\models\Product::class, 'url_key' => 'product_id', 'action_key' => 'product',],
+                        ['model' => \common\models\ProductGroupModel::class, 'url_key' => 'group_id', 'action_key' => 'group',],
+                        ['model' => \common\models\ProductModel::class, 'url_key' => 'product_id', 'action_key' => 'product',],
                     ]
                 ],
         ],
