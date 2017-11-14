@@ -105,10 +105,10 @@ View
 -----
 ```php
 <a href="Url::toRoute(['/product/show', 'group_id' => $group, 'product_id' => $product->id])">Go to product</a>
+```
 example url: https://tise/product/show/water/colla
 water = group seo url
 colla = product seo url
-```
 
 Action from Product Controller
 -----
