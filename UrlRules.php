@@ -64,10 +64,16 @@ class UrlRules extends Object implements UrlRuleInterface
                 if (!$model instanceof IUrlRules) {
                     throw new \Exception('Model ' . $rout['model'] . ' not using interface ' . UrlRuleInterface::class . '.');
                 }
-                $params[$rout['action_key']] = $model->fiendKey($pathInfo[$this->level + $index]);
+
+                $id = $model->fiendKey($pathInfo[$this->level + $index]);
+                if(!empty($id)) {
+                    $params[$rout['action_key']] = $model->fiendKey($pathInfo[$this->level + $index]);
+                }
                 $index++;
             }
-            return [$this->controller_and_action, $params];
+            if(!empty($params)) {
+                return [$this->controller_and_action, $params];
+            }
         }
         return false;
     }
