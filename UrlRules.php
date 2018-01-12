@@ -44,7 +44,7 @@ class UrlRules extends Object implements UrlRuleInterface
             throw new \Exception('Class ' . UrlRules::className() . ' parameter exception model, action or controller_and_action.');
         }
 
-        $this->level = count(explode('/', \Yii::$app->getRequest()->url)) - count($this->routes) - 1;
+        $this->level = count(explode('/', $request->getPathInfo())) - count($this->routes);
         $pathInfo = explode('/', $request->getPathInfo());
 
         $link_url = array_reverse($pathInfo);
